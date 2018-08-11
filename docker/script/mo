@@ -1,0 +1,4 @@
+sudo service rpcbind start
+cd /home/xsun
+mkdir work
+mount 10.150.200.10:/home/xsun/work /home/xsun/work
