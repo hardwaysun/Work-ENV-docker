@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/usr-varmour/home/xsun/work/2013_0116/nodes/control_node'
+let g:netrw_dirhist_2='/usr-varmour/home/xsun/work/2013_0117'
+let g:netrw_dirhist_3='/usr-varmour/home/xsun/tips'
+let g:netrw_dirhist_4='/usr-varmour/home/xsun/work/2013-0131/common/libinterface'
+let g:netrw_dirhist_5='/usr-varmour/home/xsun/tips'
+let g:netrw_dirhist_6='/usr/share/qemu/keymaps'
+let g:netrw_dirhist_7='/home/xsun/work/2013_rc1/monitor'
