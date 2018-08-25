@@ -43,6 +43,11 @@ RUN dpkg-divert --local --rename --add /sbin/initctl && ln -sf /bin/true /sbin/i
 RUN apt-get update && apt-get install -y xorg gnome-core gnome-session-fallback tightvncserver libreoffice
 RUN apt-get update && apt-get install -y rpcbind nfs-common g++  vim ssh net-tools iputils-ping cscope git gdb autocutsel 
 
+RUN apt-get install -y software-properties-common 
+RUN add-apt-repository ppa:alessandro-strada/google-drive-ocamlfuse-beta
+RUN apt-get update
+RUN apt-get install google-drive-ocamlfuse
+
 # Pull in the hack to fix keyboard shortcut bindings for GNOME 3 under VNC
 ADD script/gnome-keybindings.pl /usr/local/etc/gnome-keybindings.pl
 RUN chmod +x /usr/local/etc/gnome-keybindings.pl
@@ -57,6 +62,7 @@ ADD script/cn2.jpg /usr/share/backgrounds/gnome/cn2.jpg
 ADD script/.bashrc /home/xsun/.bashrc
 ADD vim/.   /home/xsun/.
 RUN mkdir -p /home/xsun/.vnc
+RUN mkdir -p /home/xsun/work
 RUN mkdir -p ~/.config/nautilus
 ADD script/xstartup /home/xsun/.vnc/xstartup
 RUN chmod 755 /home/xsun/.vnc/xstartup
@@ -68,10 +74,10 @@ RUN chmod +x /usr/local/etc/start-vnc-expect-script.sh
 ADD script/vnc.conf /etc/vnc.conf
 RUN service rpcbind start
 
-RUN echo 'root:varmour' |chpasswd
+RUN echo 'root:root' |chpasswd
 RUN useradd xsun
 RUN usermod -aG sudo xsun
-RUN echo 'xsun:varmour' |chpasswd
+RUN echo 'xsun:xsun' |chpasswd
 USER xsun
 
 
@@ -86,3 +92,4 @@ EXPOSE 5901
 EXPOSE 5902 
 
 #docker run -ti -h xsun-dev -p 5901:5901 -p 5902:5902 --privileged=true ecb7dfc59485 bash 
+#docker run -ti -p 5901:5901 --cap-add SYS_ADMIN --device /dev/fuse cdf33dadecd2 bash
