@@ -92,4 +92,6 @@ EXPOSE 5901
 EXPOSE 5902 
 
 #docker run -ti -h xsun-dev -p 5901:5901 -p 5902:5902 --privileged=true ecb7dfc59485 bash 
-#docker run -ti -p 5901:5901 --cap-add SYS_ADMIN --device /dev/fuse cdf33dadecd2 bash
+#docker run -ti -p 5901:5901 --privileged --cap-add SYS_ADMIN --device /dev/fuse cdf33dadecd2 bash
+#google-drive-ocamlfuse
+#google-drive-ocamlfuse /home/xsun/work
